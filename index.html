@@ -779,12 +779,128 @@ body {
 
 }
 
+
+/* =====================================================
+   BARRA DE NAVEGACIÓN
+   ===================================================== */
+
+.j2s-navbar {
+    width: 100%;
+    height: 72px;
+    background: rgba(255,255,255,.98);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    box-sizing: border-box;
+    box-shadow: 0 3px 15px rgba(0,0,0,.08);
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+}
+
+.j2s-navbar-logo {
+    color: var(--oscuro);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.j2s-navbar-logo span {
+    color: var(--azul);
+}
+
+.j2s-navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.j2s-navbar-menu a {
+    color: var(--oscuro);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.j2s-navbar-menu a:hover {
+    color: var(--azul-oscuro);
+    transform: translateY(-1px);
+}
+
+.j2s-navbar-menu .j2s-nav-whatsapp {
+    background: var(--verde);
+    color: white;
+    padding: 11px 18px;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(37,211,102,.22);
+}
+
+.j2s-navbar-menu .j2s-nav-whatsapp:hover {
+    color: white;
+    background: #1ebe5d;
+}
+
+@media(max-width:800px) {
+    .j2s-navbar {
+        height: auto;
+        min-height: 72px;
+        padding: 13px 18px;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .j2s-navbar-logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .j2s-navbar-menu {
+        width: 100%;
+        justify-content: center;
+        gap: 12px 18px;
+        flex-wrap: wrap;
+    }
+
+    .j2s-navbar-menu a {
+        font-size: 14px;
+    }
+}
+
 </style>
 
 </head>
 
 
 <body>
+
+
+<!-- =====================================================
+     BARRA DE NAVEGACIÓN
+     ===================================================== -->
+
+<nav class="j2s-navbar">
+
+    <a href="index.html" class="j2s-navbar-logo">
+        J²S² <span>Market</span>
+    </a>
+
+    <div class="j2s-navbar-menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="catalogo.html">Catálogo</a>
+
+        <a href="contacto.html">Contacto</a>
+
+    </div>
+
+</nav>
+
+
 
 
 <!-- =====================================================
@@ -820,7 +936,7 @@ comodidad de recibir tu pedido donde estés.
 <div class="j2s-buttons">
 
 <a
-href="#productos"
+href="catalogo.html"
 class="j2s-btn j2s-btn-primary"
 >
 🛍️ VER PRODUCTOS
