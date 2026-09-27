@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>J2S² Market</title>
+
+<style>
+
+/* =====================================================
+   J2S² MARKET
+   CONFIGURACIÓN GENERAL
+   ===================================================== */
+
+:root {
+    --azul: #4d9de0;
+    --azul-oscuro: #1769aa;
+    --azul-claro: #eaf5ff;
+    --naranja: #ff9800;
+    --verde: #25D366;
+    --oscuro: #172033;
+    --gris: #667085;
+    --blanco: #ffffff;
+}
+
+
+/* =====================================================
+   CONFIGURACIÓN
+   CAMBIA ESTOS DATOS
+   ===================================================== */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: var(--oscuro);
+}
+
+
+/* =====================================================
+   CONTENEDOR
+   ===================================================== */
+
+.j2s-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   HERO PRINCIPAL
+   ===================================================== */
+
+.j2s-hero {
+
+    min-height: 620px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 0 0 35px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(18, 78, 125, .95),
+            rgba(77,157,224,.72),
+            rgba(77,157,224,.20)
+        ),
+        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* decoración */
+
+.j2s-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    right: -180px;
+    top: -180px;
+
+}
+
+
+/* =====================================================
+   CONTENIDO HERO
+   ===================================================== */
+
+.j2s-hero-content {
+
+    position: relative;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    color: white;
+}
+
+
+.j2s-badge {
+
+    display: inline-block;
+
+    background: rgba(255,255,255,.16);
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+    backdrop-filter: blur(8px);
+
+}
+
+
+.j2s-hero h1 {
+
+    font-size: clamp(45px, 7vw, 82px);
+
+    line-height: .95;
+
+    margin: 0;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+}
+
+
+.j2s-hero h1 span {
+
+    color: #ffd166;
+
+}
+
+
+.j2s-hero h2 {
+
+    font-size: clamp(22px, 3vw, 34px);
+
+    margin: 22px 0 15px;
+
+    font-weight: 600;
+
+}
+
+
+.j2s-hero p {
+
+    max-width: 650px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.92);
+
+}
+
+
+/* =====================================================
+   BOTONES
+   ===================================================== */
+
+.j2s-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 30px;
+
+}
+
+
+.j2s-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px 25px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    transition: .25s;
+
+}
+
+
+.j2s-btn-primary {
+
+    background: var(--naranja);
+
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(255,152,0,.3);
+
+}
+
+
+.j2s-btn-primary:hover {
+
+    transform: translateY(-3px);
+
+    background: #ff8800;
+
+}
+
+
+.j2s-btn-whatsapp {
+
+    background: var(--verde);
+
+    color: white;
+
+}
+
+
+.j2s-btn-whatsapp:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =====================================================
+   BARRA DE CONFIANZA
+   ===================================================== */
+
+.j2s-trust {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1100px;
+
+    margin: -45px auto 0;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.10);
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 15px;
+
+}
+
+
+.j2s-trust-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+}
+
+
+.j2s-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: var(--azul-claro);
+
+    font-size: 23px;
+
+}
+
+
+.j2s-trust-item strong {
+
+    display: block;
+
+    font-size: 15px;
+
+}
+
+
+.j2s-trust-item small {
+
+    display: block;
+
+    color: var(--gris);
+
+    margin-top: 4px;
+
+}
+
+
+/* =====================================================
+   SECCIÓN BIENVENIDA
+   ===================================================== */
+
+.j2s-section {
+
+    padding: 85px 25px;
+
+}
+
+
+.j2s-section-title {
+
+    text-align: center;
+
+    max-width: 750px;
+
+    margin: auto;
+
+}
+
+
+.j2s-section-title .mini {
+
+    color: var(--naranja);
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+
+}
+
+
+.j2s-section-title h2 {
+
+    font-size: clamp(32px,5vw,50px);
+
+    margin: 12px 0;
+
+}
+
+
+.j2s-section-title h2 span {
+
+    color: var(--azul);
+
+}
+
+
+.j2s-section-title p {
+
+    color: var(--gris);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   TARJETAS
+   ===================================================== */
+
+.j2s-cards {
+
+    max-width: 1100px;
+
+    margin: 45px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 25px;
+
+}
+
+
+.j2s-card {
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,.07);
+
+    transition: .3s;
+
+}
+
+
+.j2s-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
+
+}
+
+
+.j2s-card-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.j2s-card h3 {
+
+    margin: 8px 0;
+
+    font-size: 20px;
+
+}
+
+
+.j2s-card p {
+
+    color: var(--gris);
+
+    line-height: 1.6;
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   SECCIÓN PRODUCTOS
+   ===================================================== */
+
+.j2s-products-section {
+
+    background: #eef6fc;
+
+    padding: 80px 25px;
+
+}
+
+
+.j2s-products {
+
+    max-width: 1100px;
+
+    margin: 45px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 25px;
+
+}
+
+
+.j2s-product {
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 7px 25px rgba(0,0,0,.08);
+
+}
+
+
+.j2s-product img {
+
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.j2s-product-content {
+
+    padding: 20px;
+
+}
+
+
+.j2s-product h3 {
+
+    margin: 0 0 8px;
+
+}
+
+
+.j2s-product p {
+
+    color: var(--gris);
+
+    line-height: 1.5;
+
+}
+
+
+.j2s-product-price {
+
+    color: var(--naranja);
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    margin: 15px 0;
+
+}
+
+
+/* =====================================================
+   LLAMADO A WHATSAPP
+   ===================================================== */
+
+.j2s-contact {
+
+    max-width: 1100px;
+
+    margin: 70px auto;
+
+    padding: 55px 30px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769aa,
+            #4d9de0
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.j2s-contact h2 {
+
+    font-size: clamp(30px,5vw,45px);
+
+    margin: 0 0 15px;
+
+}
+
+
+.j2s-contact p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+}
+
+
+/* =====================================================
+   WHATSAPP FLOTANTE
+   ===================================================== */
+
+.j2s-whatsapp-float {
+
+    position: fixed;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    z-index: 999999;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--verde);
+
+    color: white;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-size: 30px;
+
+    box-shadow: 0 7px 25px rgba(0,0,0,.25);
+
+    animation: whatsappPulse 2s infinite;
+
+}
+
+
+@keyframes whatsappPulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 16px rgba(37,211,102,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37,211,102,0);
+    }
+
+}
+
+
+/* =====================================================
+   PIE
+   ===================================================== */
+
+.j2s-footer {
+
+    background: #101828;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+}
+
+
+.j2s-footer strong {
+
+    font-size: 22px;
+
+}
+
+
+.j2s-footer p {
+
+    color: #98a2b3;
+
+}
+
+
+/* =====================================================
+   CELULAR
+   ===================================================== */
+
+@media(max-width:800px) {
+
+    .j2s-hero {
+
+        min-height: 600px;
+
+    }
+
+
+    .j2s-trust {
+
+        grid-template-columns: repeat(2,1fr);
+
+        margin-left: 15px;
+        margin-right: 15px;
+
+    }
+
+
+    .j2s-cards,
+    .j2s-products {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .j2s-section {
+
+        padding: 65px 18px;
+
+    }
+
+
+    .j2s-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .j2s-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+
+@media(max-width:480px) {
+
+    .j2s-trust {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="j2s-hero">
+
+<div class="j2s-hero-content">
+
+<div class="j2s-badge">
+✨ Bienvenido a nuestra tienda
+</div>
+
+
+<h1>
+J²S² <span>Market</span>
+</h1>
+
+
+<h2>
+Todo lo que buscas, en un solo lugar.
+</h2>
+
+
+<p>
+Descubre productos seleccionados para tu día a día,
+con atención personalizada, compra fácil y la
+comodidad de recibir tu pedido donde estés.
+</p>
+
+
+<div class="j2s-buttons">
+
+<a
+href="#productos"
+class="j2s-btn j2s-btn-primary"
+>
+🛍️ VER PRODUCTOS
+</a>
+
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20más%20información%20sobre%20sus%20productos."
+target="_blank"
+class="j2s-btn j2s-btn-whatsapp"
+>
+💬 HABLAR POR WHATSAPP
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BARRA DE CONFIANZA
+     ===================================================== -->
+
+<div class="j2s-trust">
+
+<div class="j2s-trust-item">
+
+<div class="j2s-icon">🚚</div>
+
+<div>
+<strong>Envíos a domicilio</strong>
+<small>Recibe donde estés</small>
+</div>
+
+</div>
+
+
+<div class="j2s-trust-item">
+
+<div class="j2s-icon">💬</div>
+
+<div>
+<strong>Atención por WhatsApp</strong>
+<small>Estamos para ayudarte</small>
+</div>
+
+</div>
+
+
+<div class="j2s-trust-item">
+
+<div class="j2s-icon">💵</div>
+
+<div>
+<strong>Pago contra entrega</strong>
+<small>Donde esté disponible</small>
+</div>
+
+</div>
+
+
+<div class="j2s-trust-item">
+
+<div class="j2s-icon">🔒</div>
+
+<div>
+<strong>Compra segura</strong>
+<small>Acompañamiento durante el proceso</small>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     BIENVENIDA
+     ===================================================== -->
+
+<section class="j2s-section">
+
+<div class="j2s-section-title">
+
+<div class="mini">
+J2S² MARKET
+</div>
+
+
+<h2>
+Compra fácil, <span>rápida y segura.</span>
+</h2>
+
+
+<p>
+Encuentra productos seleccionados para ti.
+Explora nuestro catálogo, conoce cada producto
+y escríbenos directamente por WhatsApp para
+resolver tus dudas.
+</p>
+
+</div>
+
+
+
+<div class="j2s-cards">
+
+
+<div class="j2s-card">
+
+<div class="j2s-card-icon">
+🛍️
+</div>
+
+<h3>
+Productos seleccionados
+</h3>
+
+<p>
+Buscamos productos prácticos y atractivos
+para facilitar tus compras.
+</p>
+
+</div>
+
+
+
+<div class="j2s-card">
+
+<div class="j2s-card-icon">
+💬
+</div>
+
+<h3>
+Atención personalizada
+</h3>
+
+<p>
+¿Tienes alguna pregunta?
+Escríbenos directamente por WhatsApp.
+</p>
+
+</div>
+
+
+
+<div class="j2s-card">
+
+<div class="j2s-card-icon">
+🚚
+</div>
+
+<h3>
+Recibe tu pedido
+</h3>
+
+<p>
+Realiza tu pedido y recibe tus productos
+directamente donde estés.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTOS DESTACADOS
+     ===================================================== -->
+
+<section
+class="j2s-products-section"
+id="productos"
+>
+
+<div class="j2s-section-title">
+
+<div class="mini">
+NUESTROS PRODUCTOS
+</div>
+
+<h2>
+Productos <span>destacados</span>
+</h2>
+
+<p>
+Conoce algunos de nuestros productos.
+Para ver todo el catálogo, explora nuestra sección
+de productos.
+</p>
+
+</div>
+
+
+
+<div class="j2s-products">
+
+
+<!-- PRODUCTO 1 -->
+
+<div class="j2s-product">
+
+<img
+src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=90"
+alt="Producto 1"
+>
+
+<div class="j2s-product-content">
+
+<h3>
+Producto destacado
+</h3>
+
+<p>
+Descripción breve del producto.
+Puedes cambiar este texto.
+</p>
+
+<div class="j2s-product-price">
+$49.900
+</div>
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20información%20sobre%20el%20Producto%201."
+target="_blank"
+class="j2s-btn j2s-btn-whatsapp"
+>
+💬 Preguntar
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCTO 2 -->
+
+<div class="j2s-product">
+
+<img
+src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=90"
+alt="Producto 2"
+>
+
+<div class="j2s-product-content">
+
+<h3>
+Producto destacado
+</h3>
+
+<p>
+Descripción breve del producto.
+Puedes cambiar este texto.
+</p>
+
+<div class="j2s-product-price">
+$59.900
+</div>
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20información%20sobre%20el%20Producto%202."
+target="_blank"
+class="j2s-btn j2s-btn-whatsapp"
+>
+💬 Preguntar
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCTO 3 -->
+
+<div class="j2s-product">
+
+<img
+src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=90"
+alt="Producto 3"
+>
+
+<div class="j2s-product-content">
+
+<h3>
+Producto destacado
+</h3>
+
+<p>
+Descripción breve del producto.
+Puedes cambiar este texto.
+</p>
+
+<div class="j2s-product-price">
+$69.900
+</div>
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20información%20sobre%20el%20Producto%203."
+target="_blank"
+class="j2s-btn j2s-btn-whatsapp"
+>
+💬 Preguntar
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHATSAPP GENERAL
+     ===================================================== -->
+
+<section class="j2s-contact">
+
+<h2>
+¿Tienes alguna pregunta?
+</h2>
+
+<p>
+Estamos aquí para ayudarte. Escríbenos por WhatsApp
+y te brindaremos información sobre nuestros productos,
+precios, disponibilidad y formas de entrega.
+</p>
+
+
+<div class="j2s-buttons"
+style="justify-content:center;">
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20más%20información."
+target="_blank"
+class="j2s-btn j2s-btn-whatsapp"
+>
+💬 ESCRIBIR POR WHATSAPP
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOTÓN WHATSAPP FLOTANTE
+     ===================================================== -->
+
+<a
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20quiero%20más%20información."
+target="_blank"
+class="j2s-whatsapp-float"
+title="Escríbenos por WhatsApp"
+>
+💬
+</a>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="j2s-footer">
+
+<strong>J²S² Market</strong>
+
+<p>
+Todo lo que buscas en un solo lugar.
+</p>
+
+<p>
+© 2026 J2S² Market
+</p>
+
+</footer>
+
+
+</body>
+</html>
