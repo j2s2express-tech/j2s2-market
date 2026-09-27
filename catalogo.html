@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>J2S² Market - Catálogo</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #172033;
+}
+
+/* ENCABEZADO */
+
+.catalogo-header {
+    text-align: center;
+    padding: 35px 20px 25px;
+    background: linear-gradient(135deg, #6fa8dc, #4f8fca);
+    color: white;
+    border-radius: 18px;
+    margin-bottom: 30px;
+}
+
+.catalogo-header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.catalogo-header p {
+    margin: 10px 0 0;
+    font-size: 17px;
+    opacity: 0.95;
+}
+
+/* BUSCADOR */
+
+.buscador {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.buscador input:focus {
+    border-color: #6fa8dc;
+}
+
+/* CATEGORÍAS */
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.categoria {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: white;
+    color: #4f8fca;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.categoria:hover,
+.categoria.activa {
+    background: #4f8fca;
+    color: white;
+}
+
+/* PRODUCTOS */
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* TARJETA */
+
+.producto {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    transition: 0.25s;
+    cursor: pointer;
+    position: relative;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+}
+
+.producto-img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    background: #eee;
+}
+
+.producto-info {
+    padding: 18px;
+}
+
+.producto-info h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.producto-descripcion-corta {
+    color: #687386;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
+}
+
+.precio {
+    color: #f39c12;
+    font-size: 23px;
+    font-weight: 800;
+    margin: 13px 0;
+}
+
+/* BOTÓN WHATSAPP */
+
+.whatsapp {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background: #25D366;
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.whatsapp:hover {
+    background: #1ebe5d;
+    transform: scale(1.02);
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.modal-contenido {
+    background: white;
+    max-width: 700px;
+    margin: 30px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+}
+
+.modal-info {
+    padding: 25px;
+}
+
+.modal-info h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.modal-info p {
+    color: #606b7b;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.modal-precio {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f39c12;
+    margin: 15px 0;
+}
+
+.btn-comprar {
+    display: block;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.cerrar {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.65);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* PIE */
+
+.pie-catalogo {
+    text-align: center;
+    margin-top: 45px;
+    padding: 25px;
+    color: #697386;
+    font-size: 14px;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .catalogo-header h1 {
+        font-size: 28px;
+    }
+
+    .productos {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-img {
+        height: 250px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ENCABEZADO -->
+
+<div class="catalogo-header">
+
+    <h1>J2S² Market</h1>
+
+    <p>✨ Productos seleccionados para ti</p>
+
+</div>
+
+
+<!-- BUSCADOR -->
+
+<div class="buscador">
+
+    <input
+        type="text"
+        id="buscador"
+        placeholder="🔎 Buscar un producto..."
+        onkeyup="buscarProducto()"
+    >
+
+</div>
+
+
+<!-- CATEGORÍAS -->
+
+<div class="categorias">
+
+    <button class="categoria activa" onclick="filtrar('todos', this)">
+        Todos
+    </button>
+
+    <button class="categoria" onclick="filtrar('hogar', this)">
+        🏠 Hogar
+    </button>
+
+    <button class="categoria" onclick="filtrar('tecnologia', this)">
+        📱 Tecnología
+    </button>
+
+    <button class="categoria" onclick="filtrar('accesorios', this)">
+        🎧 Accesorios
+    </button>
+
+</div>
+
+
+<!-- PRODUCTOS -->
+
+<div class="productos" id="productos">
+
+
+<!-- PRODUCTO 1 -->
+
+<div
+class="producto"
+data-categoria="hogar"
+data-nombre="Producto para el hogar"
+onclick="abrirProducto(
+'Producto para el hogar',
+'Descripción completa del producto. Aquí puedes explicar sus características, beneficios y por qué el cliente debería comprarlo.',
+'$49.900',
+'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80'
+)"
+>
+
+<img
+class="producto-img"
+src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+alt="Producto"
+>
+
+<div class="producto-info">
+
+<h3>Producto para el hogar</h3>
+
+<div class="producto-descripcion-corta">
+Ideal para facilitar tus actividades del día a día.
+</div>
+
+<div class="precio">
+$49.900
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20estoy%20interesado%20en%20el%20Producto%20para%20el%20hogar"
+target="_blank"
+onclick="event.stopPropagation()"
+>
+💬 Comprar por WhatsApp
+</a>
+
+</div>
+</div>
+
+
+<!-- PRODUCTO 2 -->
+
+<div
+class="producto"
+data-categoria="tecnologia"
+data-nombre="Producto tecnológico"
+onclick="abrirProducto(
+'Producto tecnológico',
+'Descripción completa del producto tecnológico. Agrega aquí sus funciones, características y beneficios.',
+'$79.900',
+'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80'
+)"
+>
+
+<img
+class="producto-img"
+src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80"
+alt="Producto tecnológico"
+>
+
+<div class="producto-info">
+
+<h3>Producto tecnológico</h3>
+
+<div class="producto-descripcion-corta">
+Tecnología práctica para tu día a día.
+</div>
+
+<div class="precio">
+$79.900
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20estoy%20interesado%20en%20el%20Producto%20tecnologico"
+target="_blank"
+onclick="event.stopPropagation()"
+>
+💬 Comprar por WhatsApp
+</a>
+
+</div>
+</div>
+
+
+<!-- PRODUCTO 3 -->
+
+<div
+class="producto"
+data-categoria="accesorios"
+data-nombre="Accesorio moderno"
+onclick="abrirProducto(
+'Accesorio moderno',
+'Este es el espacio para colocar una descripción completa del producto, materiales, características y beneficios.',
+'$39.900',
+'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80'
+)"
+>
+
+<img
+class="producto-img"
+src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+alt="Accesorio"
+>
+
+<div class="producto-info">
+
+<h3>Accesorio moderno</h3>
+
+<div class="producto-descripcion-corta">
+Diseño moderno y práctico.
+</div>
+
+<div class="precio">
+$39.900
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20estoy%20interesado%20en%20el%20Accesorio%20moderno"
+target="_blank"
+onclick="event.stopPropagation()"
+>
+💬 Comprar por WhatsApp
+</a>
+
+</div>
+</div>
+
+
+<!-- PRODUCTO 4 -->
+
+<div
+class="producto"
+data-categoria="hogar"
+data-nombre="Producto práctico"
+onclick="abrirProducto(
+'Producto práctico',
+'Descripción completa del producto. Explica aquí cómo funciona y cuáles son sus principales beneficios.',
+'$59.900',
+'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80'
+)"
+>
+
+<img
+class="producto-img"
+src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+alt="Producto"
+>
+
+<div class="producto-info">
+
+<h3>Producto práctico</h3>
+
+<div class="producto-descripcion-corta">
+Una solución práctica para tu hogar.
+</div>
+
+<div class="precio">
+$59.900
+</div>
+
+<a
+class="whatsapp"
+href="https://wa.me/57TU_NUMERO?text=Hola%20J2S2%20Market,%20estoy%20interesado%20en%20el%20Producto%20practico"
+target="_blank"
+onclick="event.stopPropagation()"
+>
+💬 Comprar por WhatsApp
+</a>
+
+</div>
+</div>
+
+
+</div>
+
+
+<!-- MODAL DEL PRODUCTO -->
+
+<div class="modal" id="modal">
+
+<div class="modal-contenido">
+
+<button class="cerrar" onclick="cerrarProducto()">
+×
+</button>
+
+<img
+id="modalImagen"
+class="modal-img"
+src=""
+alt="Producto"
+>
+
+<div class="modal-info">
+
+<h2 id="modalNombre"></h2>
+
+<p id="modalDescripcion"></p>
+
+<div
+class="modal-precio"
+id="modalPrecio">
+</div>
+
+<a
+id="modalWhatsApp"
+class="btn-comprar"
+target="_blank"
+>
+💬 Preguntar por WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PIE -->
+
+<div class="pie-catalogo">
+
+J2S² Market © 2026  
+<br>
+Compra fácil, segura y con atención personalizada.
+
+</div>
+
+
+<script>
+
+/* NÚMERO DE WHATSAPP */
+
+const numeroWhatsApp = "57TU_NUMERO";
+
+
+/* ABRIR PRODUCTO */
+
+function abrirProducto(nombre, descripcion, precio, imagen) {
+
+    document.getElementById("modalNombre").innerText = nombre;
+
+    document.getElementById("modalDescripcion").innerText = descripcion;
+
+    document.getElementById("modalPrecio").innerText = precio;
+
+    document.getElementById("modalImagen").src = imagen;
+
+    const mensaje =
+        "Hola J2S2 Market, estoy interesado en el producto: " + nombre;
+
+    document.getElementById("modalWhatsApp").href =
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
+        encodeURIComponent(mensaje);
+
+    document.getElementById("modal").style.display = "block";
+
+}
+
+
+/* CERRAR */
+
+function cerrarProducto() {
+
+    document.getElementById("modal").style.display = "none";
+
+}
+
+
+/* CERRAR AL HACER CLICK AFUERA */
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById("modal");
+
+    if (event.target === modal) {
+
+        cerrarProducto();
+
+    }
+
+}
+
+
+/* BUSCADOR */
+
+function buscarProducto() {
+
+    const texto =
+        document.getElementById("buscador").value.toLowerCase();
+
+    const productos =
+        document.querySelectorAll(".producto");
+
+    productos.forEach(function(producto) {
+
+        const nombre =
+            producto.dataset.nombre.toLowerCase();
+
+        if (nombre.includes(texto)) {
+
+            producto.style.display = "";
+
+        } else {
+
+            producto.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* FILTROS */
+
+function filtrar(categoria, boton) {
+
+    document.querySelectorAll(".categoria").forEach(function(btn) {
+
+        btn.classList.remove("activa");
+
+    });
+
+    boton.classList.add("activa");
+
+    const productos =
+        document.querySelectorAll(".producto");
+
+    productos.forEach(function(producto) {
+
+        if (
+            categoria === "todos" ||
+            producto.dataset.categoria === categoria
+        ) {
+
+            producto.style.display = "";
+
+        } else {
+
+            producto.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
